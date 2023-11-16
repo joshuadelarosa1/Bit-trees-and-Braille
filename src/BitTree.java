@@ -1,3 +1,5 @@
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
 
@@ -68,7 +70,7 @@ public class BitTree {
         }
       } else {
         throw new Exception("Invalid input in bits. Please only use '0' or '1'");
-      } 
+      }
       i++;
     }
 
@@ -131,7 +133,29 @@ public class BitTree {
    * Reads a series of lines of the form bits,value and stores them in the tree.
    */
   public void load(InputStream source) {
-    // STUB
+    String input = "";
+
+    try {
+      byte[] fileInput = new byte[source.available() + 1];
+      source.read(fileInput);
+      input = new String(fileInput);
+      source.close();
+    } catch (IOException e) {
+      System.err.println("Could not scan file");
+      e.printStackTrace();
+    }
+
+    String[] inputSplit = input.split("\\r?\\n|\\r");
+
+    for (String temp : inputSplit) {
+      String[] current = temp.split(",");
+      try {
+        this.set(current[0], current[1]);
+      } catch (Exception e) {
+        System.err.println("Could not set from file.");
+        e.printStackTrace();
+      }
+    }
   } // load(InputStream source)
 
   // +---------+-----------------------------------------------------
