@@ -148,6 +148,11 @@ public class BitTree {
     String[] inputSplit = input.split("\\r?\\n|\\r");
 
     for (String temp : inputSplit) {
+      if (temp == null) {
+        System.err.println("One of your lines is null. Please try again.");
+        System.exit(1);
+      }
+
       String[] current = temp.split(",");
       try {
         this.set(current[0], current[1]);
