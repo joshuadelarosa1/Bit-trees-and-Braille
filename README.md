@@ -16,3 +16,6 @@ https://www.programiz.com/java-programming/inputstream
 
 This helped me with splitting Strings by a set size:
 https://stackoverflow.com/questions/3760152/split-string-to-equal-length-substrings-in-java
+
+This helped me with figuring out how to print unicode:
+https://stackoverflow.com/questions/11145681/how-to-convert-a-string-with-unicode-encoding-to-a-string-of-letters
