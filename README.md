@@ -13,3 +13,6 @@ https://www.baeldung.com/java-string-split-by-newline
 
 This helped me with the input stream:
 https://www.programiz.com/java-programming/inputstream
+
+This helped me with splitting Strings by a set size:
+https://stackoverflow.com/questions/3760152/split-string-to-equal-length-substrings-in-java

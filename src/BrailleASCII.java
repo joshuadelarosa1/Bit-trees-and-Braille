@@ -14,15 +14,43 @@ public class BrailleASCII {
 
     switch (args[0]) {
       case "braille":
+        String resultBraille = "";
+        String upper = args[1].toUpperCase();
+        char argArray[] = upper.toCharArray();
+
+        for (char temp : argArray) {
+          resultBraille += BrailleASCIITables.toBraille(temp);
+        }
+        System.out.println(resultBraille);
+
         break;
       case "ascii":
+        String resultASCII = "";
+        String[] splitString = args[1].split("(?<=\\G.{6})");
+
+        for (String ASCIITemp : splitString) {
+          resultASCII += BrailleASCIITables.toASCII(ASCIITemp);
+        }
+        System.out.println(resultASCII);
+
         break;
       case "unicode":
+        String resultUnicode = BrailleASCIITables.toUnicode(args[1]);
+        String[] unicodeSplit = resultUnicode.split("(?<=\\G.{4})");
+        String finalUnicode = "";
+
+        for (String unicodeTemp : unicodeSplit) {
+          int hexVal = Integer.parseInt(unicodeTemp, 16);
+          finalUnicode += (char) hexVal;
+        }
+        
+        pen.println(finalUnicode);
         break;
       default:
-        System.err
-            .println("You have not entered a correct input. Here is what you entered: " + args[0]);
-        System.err.println("");
+        System.err.print("You have not entered a correct input.");
+        System.err.println(" Here is what you entered: " + args[0]);
+        System.err.print("Correct inputs are 'braille' 'ascii' & 'unicode' followed by ");
+        System.err.println("the desired string");
     }
   }
 } // class BrailleASCII

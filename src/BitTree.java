@@ -1,4 +1,3 @@
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
@@ -41,7 +40,7 @@ public class BitTree {
    * length or contains values other than 0 or 1.
    */
   public void set(String bits, String value) throws Exception {
-    if (bits.length() != this.n) {
+    if (bits.length() > this.n) {
       throw new Exception("Invalid number of characters");
     }
 
@@ -81,8 +80,9 @@ public class BitTree {
    * Follows the path through the tree given by bits, returning the value at the end. If there is no
    * such path, or if bits is the incorrect length, get throws an exception.
    */
+  @SuppressWarnings("unchecked")
   public String get(String bits) throws Exception {
-    if (bits.length() != n) {
+    if (bits.length() > n) {
       throw new Exception("Invalid number of characters.");
     }
 
@@ -170,6 +170,7 @@ public class BitTree {
   /*
    * Helper functino for dump, prints out keys and values
    */
+  @SuppressWarnings("unchecked")
   public void dump(PrintWriter pen, BitTreeNode<String> current) {
     if (current.left == null && current.right == null) {
       BitTreeLeaf<String, String> result = (BitTreeLeaf<String, String>) current;

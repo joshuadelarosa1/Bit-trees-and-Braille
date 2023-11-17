@@ -1,6 +1,7 @@
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.io.PrintWriter;
 
 public class BrailleASCIITables {
 
@@ -25,8 +26,10 @@ public class BrailleASCIITables {
       InputStream conversion = new FileInputStream("ASCIIToBraille.txt");
       toBrailleTree.load(conversion);
 
-      String chString = Character.toString(letter);
-      String result = toBrailleTree.get(chString);
+      int chInt = (int) letter;
+      String ASCIICode = ("0" + Integer.toBinaryString(chInt));      
+      String result = toBrailleTree.get(ASCIICode);
+
       return result;
 
     } catch (FileNotFoundException e) {
@@ -73,12 +76,22 @@ public class BrailleASCIITables {
   public static String toUnicode(String bits) {
     int treeSize = 6;
     BitTree toUnicodeTree = new BitTree(treeSize);
+    char[] charBits = bits.toCharArray();
+    String result = "";
+    String[] ASCIICodes = new String[charBits.length];
 
     try {
       InputStream conversion = new FileInputStream("BrailleToUnicode.txt");
       toUnicodeTree.load(conversion);
 
-      String result = toUnicodeTree.get(bits);
+      for (int i = 0; i < charBits.length; i++) {
+        ASCIICodes[i] = BrailleASCIITables.toBraille(charBits[i]);
+      }
+
+      for (String temp : ASCIICodes) {
+        result += toUnicodeTree.get(temp);
+      }
+
       return result;
 
     } catch (FileNotFoundException e) {
