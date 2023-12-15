@@ -3,6 +3,12 @@ import java.io.InputStream;
 import java.io.PrintWriter;
 import org.xml.sax.InputSource;
 
+/**
+ * Driver class for implementation of BitTrees
+ * 
+ * @author Joshua Delarosa
+ * 
+ */
 public class BrailleASCII {
   public static void main(String[] args) throws Exception {
     PrintWriter pen = new PrintWriter(System.out, true);

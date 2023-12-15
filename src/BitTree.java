@@ -1,7 +1,12 @@
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
-
+/**
+ * A tree created using bits.
+ * 
+ * @author Joshua Delarosa
+ * 
+ */
 public class BitTree {
 
   // +--------+------------------------------------------------------

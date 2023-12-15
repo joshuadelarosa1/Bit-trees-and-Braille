@@ -1,3 +1,9 @@
+/**
+ * An extension of BitTreeNode that includes a value.
+ * 
+ * @author Joshua Delarosa
+ * 
+ */
 public class BitTreeLeaf<K, V> extends BitTreeNode<K> {
 
   // +--------+------------------------------------------------------

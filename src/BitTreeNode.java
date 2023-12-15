@@ -1,3 +1,9 @@
+/**
+ * A BitTree node that has a key, left, and right.
+ * 
+ * @author Joshua Delarosa
+ * 
+ */
 public class BitTreeNode<K> {
 
   // +--------+------------------------------------------------------
